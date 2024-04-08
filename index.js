@@ -38,12 +38,6 @@ const start = () => {
       case 'View all employees':
         viewEmployees();
         break;
-      case 'View employees by department':
-        viewEmployeesByDepartment();
-        break;
-      case 'View employees by manager':
-        viewEmployeesByManager();
-        break;
       case 'View all roles':
         viewRoles();
         break;
@@ -65,6 +59,7 @@ const start = () => {
       case 'Exit':
         db.end();
         break;
+        default:        
     }
   });
 };
@@ -82,40 +77,19 @@ const viewEmployees = () => {
       return;
     }
     console.table(results);
-    start();
+    
   });
 };
 
-const viewEmployeesByDepartment = () => {
-  db.query('SELECT * FROM department', function(err, results) {
-    if (err) {
-      console.log(err.message);
-      return;
-    }
-    console.table(results);
-    start();
-  });
-};
-
-const viewEmployeesByManager = () => {
-  db.query('SELECT * FROM manager', function(err, results) {
-    if (err) {
-      console.log(err.message);
-      return;
-    }
-    console.table(results);
-    start();
-  });
-};
 
 const viewRoles = () => {
-  db.query('SELECT * FROM role', function(err, results) {
+  db.query('SELECT * FROM roles', function(err, results) {
     if (err) {
       console.log(err.message);
       return;
     }
     console.table(results);
-    start();
+    
   });
 };
 
@@ -126,7 +100,7 @@ const viewDepartments = () => {
       return;
     }
     console.table(results);
-    start();
+    
   });
 };
 
@@ -159,7 +133,7 @@ const addEmployee = () => {
         return;
       }
       console.log('Employee added');
-      start();
+      
     });
   });
 };
@@ -182,13 +156,13 @@ const addRole = () => {
       message: 'Enter department id'
     }
   ]).then((answer) => {
-    db.query('INSERT INTO role SET ?', answer, function(err, results) {
+    db.query('INSERT INTO roles SET ?', answer, function(err, results) {
       if (err) {
         console.log(err.message);
         return;
       }
       console.log('Role added');
-      start();
+      
     });
   });
 };
@@ -207,7 +181,7 @@ const addDepartment = () => {
         return;
       }
       console.log('Department added');
-      start();
+      
     });
   });
 };
@@ -231,7 +205,7 @@ const updateEmployeeRole = () => {
         return;
       }
       console.log('Employee role updated');
-      start();
+      
     });
   });
 };
