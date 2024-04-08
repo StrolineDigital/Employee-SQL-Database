@@ -78,7 +78,9 @@ const viewEmployees = () => {
     }
     console.table(results);
     
+    start();
   });
+  
 };
 
 
@@ -90,7 +92,9 @@ const viewRoles = () => {
     }
     console.table(results);
     
+    start();
   });
+  
 };
 
 const viewDepartments = () => {
@@ -101,7 +105,9 @@ const viewDepartments = () => {
     }
     console.table(results);
     
+    start(); 
   });
+   
 };
 
 const addEmployee = () => {
@@ -135,7 +141,9 @@ const addEmployee = () => {
       console.log('Employee added');
       
     });
+    start();
   });
+  
 };
 
 const addRole = () => {
@@ -164,7 +172,9 @@ const addRole = () => {
       console.log('Role added');
       
     });
+    start();
   });
+  
 };
 
 const addDepartment = () => {
@@ -183,7 +193,9 @@ const addDepartment = () => {
       console.log('Department added');
       
     });
+    start();
   });
+  
 };
 
 const updateEmployeeRole = () => {
@@ -207,7 +219,8 @@ const updateEmployeeRole = () => {
       console.log('Employee role updated');
       
     });
+    start();
   });
+ 
 };
 
-start();
