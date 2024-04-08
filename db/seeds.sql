@@ -14,7 +14,7 @@ VALUES ('Michael', 'Scott', 1, NULL),
        ('Jim', 'Halpert', 2, 1),        
        ('Ryan', 'Howard', 5, 1),      
        ('Meredith', 'Palmer', 2, 1),    
-       ('Darryl', 'Philbin', 3, 2),       
+       ('Darryl', 'Philbin', 3, 1),       
        ('Dwight', 'Schrute', 2, NULL),   
        ('Roy', 'Anderson', 3, 1),       
        ('Andy', 'Bernard', 2, 1);      
