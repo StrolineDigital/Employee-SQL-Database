@@ -1,7 +1,9 @@
+//This variable block is for the required packages
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const cTable = require('console.table');
 
+//This block is for the connection to the database and automatically uses login credentials to make the connection
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -9,12 +11,14 @@ const db = mysql.createConnection({
   database: 'employees_db'
 });
 
+//This block throws an error if the connection is not successful and logs a message if the connection is successful
 db.connect(function(err) {
   if (err) throw err;
   console.log(`Connected to the employees_db database.`);
   start();
 });
 
+//This block is for the inquirer prompt that will be used to select the action to be taken
 const start = () => {
   inquirer.prompt([
     {
@@ -31,8 +35,10 @@ const start = () => {
         'Update employee role',
         'Exit',
       ],
+      //pageSize prevents the list from being cut off
       pageSize:8
     }
+    //This block is for the switch statement that will be used to determine the action to be taken based on the user's selection
   ]).then((answer) => {
     switch (answer.action) {
       case 'View all employees':
@@ -56,6 +62,7 @@ const start = () => {
       case 'Update employee role':
         updateEmployeeRole();
         break;
+        //db.end() ends the connection to the database
       case 'Exit':
         db.end();
         break;
@@ -63,7 +70,7 @@ const start = () => {
     }
   });
 };
-
+//the viewEmployees function is used to display the employee table in the console
 const viewEmployees = () => {
   db.query(`SELECT employee.id, employee.first_name, employee.last_name, roles.title AS role, roles.salary AS salary, 
   CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name, department.name AS department 
@@ -83,7 +90,7 @@ const viewEmployees = () => {
   
 };
 
-
+//the viewRoles function is used to display the roles table in the console
 const viewRoles = () => {
   db.query('SELECT * FROM roles', function(err, results) {
     if (err) {
@@ -96,7 +103,7 @@ const viewRoles = () => {
   });
   
 };
-
+//the viewDepartments function is used to display the department table in the console
 const viewDepartments = () => {
   db.query('SELECT * FROM department', function(err, results) {
     if (err) {
@@ -109,7 +116,7 @@ const viewDepartments = () => {
   });
    
 };
-
+//the addEmployee function is used to add an employee to the employee table
 const addEmployee = () => {
   inquirer.prompt([
     {
@@ -145,7 +152,7 @@ const addEmployee = () => {
   });
   
 };
-
+//the addRole function is used to add a role to the roles table
 const addRole = () => {
   inquirer.prompt([
     {
@@ -176,7 +183,7 @@ const addRole = () => {
   });
   
 };
-
+//the addDepartment function is used to add a department to the department table
 const addDepartment = () => {
   inquirer.prompt([
     {
@@ -197,7 +204,7 @@ const addDepartment = () => {
   });
   
 };
-
+//the updateEmployeeRole function is used to update an employee's role in the employee table
 const updateEmployeeRole = () => {
   inquirer.prompt([
     {
