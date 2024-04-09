@@ -4,6 +4,7 @@
   This project is to allow the user to view and update employee data in an SQL database using a CLI
   ## Link To The Demo Video
   
+  https://drive.google.com/file/d/16F2kBtmUV8MZqfA9EIpdDfepF-pFkG2Z/view
 
   ## Installation
   To install this command line application the user must start by having node.js and mysql installed in their local machine and  downloading the Employee-SQL-Database file from the Github repository(Instructions for installing node.js can be found here https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)(instructions for installing mysql can be found here https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/). The user must be in the main directory and use the "npm i" or "npm install" command in their bash terminal (whichever is preferred) to install the package.json. Once the package.json is installed  the user will use bash to CD into the "db" folder where they can then run "mysql -u root -p" to enter into their mysql account. The user then must start with the command "source schema.sql;" which will install the schema file locally. The user then must enter the command "source seeds.sql" which will seed the database with the starting information for the database. Once the sql files have been initiallized the user must type "quit" in the command line to return to the main bash terminal. Once the user is in the bash terminal again, they must use "cd .." to back out of the db folder and then simply type node index.js to begin the CLI application!
